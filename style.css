@@ -1,5 +1,5 @@
 html {
-  background: cadetblue
+  background-color: aquamarine;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  background-color: #ffffff63;
+  background-color: #ffffffee;
 }
 
 #anchors:hover {
