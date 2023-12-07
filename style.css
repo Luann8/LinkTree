@@ -10,7 +10,7 @@ body {
 }
 
 p {
-color: #f7f7f7ee;
+  color: #f7f7f7ee;
 
 }
 
@@ -21,7 +21,8 @@ color: #f7f7f7ee;
   flex-direction: column;
   align-items: center;
   background-color: #420858ee;
-  margin-bottom: 1rem; /* Add spacing between boxes */
+  margin-bottom: 1rem;
+  /* Add spacing between boxes */
 }
 
 #anchors:hover {
@@ -31,9 +32,11 @@ color: #f7f7f7ee;
 }
 
 .image {
-  max-width: 100%; /* Adjust as needed */
+  max-width: 100%;
+  /* Adjust as needed */
   height: auto;
-  margin-bottom: 1rem; /* Add spacing between image and text */
+  margin-bottom: 1rem;
+  /* Add spacing between image and text */
 }
 
 .first-column,
@@ -58,7 +61,8 @@ color: #f7f7f7ee;
   }
 
   .image {
-    width: 100%; /* Adjust as needed */
+    width: 100%;
+    /* Adjust as needed */
     margin-left: 0;
   }
 
