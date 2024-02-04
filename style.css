@@ -1,42 +1,62 @@
 html {
-  background: url(https://png.pngtree.com/back_origin_pic/03/89/90/82f073a03333596b643899e0e64e7067.jpg);
+  background: url(https://png.pngtree.com/back_origin_pic/04/47/97/b0961c2c30597a5a290bbca86b090efa.jpg);
   color: rgb(255, 240, 250);
+
+  zoom: 0.9; /* Adjust the zoom level as needed */
 }
 
 body {
   margin: 1rem;
   font-family: 'Fira Code', sans-serif;
-  color: aliceblue;
+  color: rgb(255, 255, 255);
 }
 
 p {
-  color: #000000ee;
-
+  color: #000000;
 }
 
 #anchors {
-  transition: color 0.25s, border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  position: relative;
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.144);
+  background-color: rgba(255, 255, 255, 0.185);
   margin-bottom: 1rem;
-  /* Add spacing between boxes */
+  overflow: hidden;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+#anchors::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: -1;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  transition: background-color 0.25s;
+}
+
+#anchors:hover::before {
+  background-color: #540c5c;
 }
 
 #anchors:hover {
-  box-shadow: 0 0.5em 0.9em -0.4em;
+  border-color: #540c5c; /* Adjust to match the purple color */
+  box-shadow: 0 0.5em 0.9em -0.4em #540c5c;
   transform: translateY(-0.25em);
   cursor: pointer;
 }
 
 .image {
-  max-width: 100%;
-  /* Adjust as needed */
+  max-width: 80%;
   height: auto;
   margin-bottom: 1rem;
-  /* Add spacing between image and text */
 }
 
 .first-column,
@@ -62,7 +82,6 @@ p {
 
   .image {
     width: 100%;
-    /* Adjust as needed */
     margin-left: 0;
   }
 
