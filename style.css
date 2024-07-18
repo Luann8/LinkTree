@@ -1,8 +1,8 @@
 :root {
-  --bg-main-color: #0c1414;
-  --light-yellow: #64d3ef;
-  --light-orange: #1626bd;
-  --light-blue: #08010c; /* Alterado para azul */
+  --bg-main-color:#0c002e;
+  --light-yellow: #edef64;
+  --light-orange: #ff5100fa;
+  --light-blue: #170055; /* Alterado para azul */
   --light-green: #4e0556;
   --light-pink: #030303; /* Alterado para roxo */
 }
@@ -10,7 +10,7 @@
 body {
   font: 16px;
   font-family: 'Josefin Sans', sans-serif;
-  color: #fff;
+  color: #ffffff;
   text-align: center;
   --transition: .2s;
 }
