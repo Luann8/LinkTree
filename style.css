@@ -1,10 +1,10 @@
 :root {
-  --bg-main-color:#0c002e;
+  --bg-main-color:#000000;
   --light-yellow: #edef64;
   --light-orange: #ff5100fa;
-  --light-blue: #170055; /* Alterado para azul */
-  --light-green: #4e0556;
-  --light-pink: #030303; /* Alterado para roxo */
+  --light-blue: #1e0072; /* Alterado para azul */
+  --light-green: #055627;
+  --light-pink: #5aa17a; /* Alterado para roxo */
 }
 
 body {
@@ -24,7 +24,7 @@ html{
     width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
-
+    scroll-behavior: smooth;
 }
 
 body{
