@@ -188,3 +188,84 @@ body{
         width: 100wv;
     }
 }
+
+@keyframes moveBall1 {
+    0% {
+        transform: translate(-5%, -5%);
+    }
+    25% {
+        transform: translate(5%, -2%);
+    }
+    50% {
+        transform: translate(0%, 5%);
+    }
+    75% {
+        transform: translate(-5%, 2%);
+    }
+    100% {
+        transform: translate(-5%, -5%);
+    }
+}
+
+@keyframes moveBall2 {
+    0% {
+        transform: translate(5%, 5%);
+    }
+    25% {
+        transform: translate(-5%, 2%);
+    }
+    50% {
+        transform: translate(0%, -5%);
+    }
+    75% {
+        transform: translate(5%, -2%);
+    }
+    100% {
+        transform: translate(5%, 5%);
+    }
+}
+
+/* Aplicação das animações */
+.ball-1 {
+    animation: moveBall1 10s ease-in-out infinite;
+}
+
+.ball-2 {
+    animation: moveBall2 12s ease-in-out infinite;
+}
+
+
+
+/* animações scroll */  
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.card{
+    animation: fadeIn 1s;
+}
+
+/* animações scroll do svg */
+
+@keyframes fadeInSvg {
+    0% {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.svg-icon{
+    animation: fadeInSvg 1s;
+}
