@@ -162,33 +162,6 @@ body{
     fill: #fff;
 }
 
-@media only screen and (max-width: 1000px){
- 
-    .ball-1{
-        left: -20%;
-    }
-    .ball-2{
-        right: -10%;
-    }
-}
-
-@media only screen and (max-width: 600px){
- 
-    .ball-1{
-        left: -90%;
-    }
-    .ball-2{
-        right: -50%;
-    }
-}
-
-@media only screen and (max-width: 600px){
- 
-    .card{
-        width: 100wv;
-    }
-}
-
 @keyframes moveBall1 {
     0% {
         transform: translate(-5%, -5%);
@@ -268,4 +241,16 @@ body{
 
 .svg-icon{
     animation: fadeInSvg 1s;
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 90vw; /* Largura ajustada para a tela */
+        padding: 20px; /* Reduzido o espaçamento */
+        border-radius: 8px; /* Arredondamento mínimo */
+        border: none; /* Sem borda */
+        box-shadow: none; /* Sem sombra */
+        backdrop-filter: none; /* Sem desfoque */
+        background-color: #00000000;
+    }
 }
