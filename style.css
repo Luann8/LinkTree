@@ -1,47 +1,45 @@
-
-
 :root {
-    --bg-main-color: #0a0a0a;
-    --accent-yellow: #ffd700;
-    --accent-orange: #ff4500;
-    --accent-blue: #4169e1;
-    --accent-green: #008080;
-    --accent-pink: #1900ff73;
+    --bg-main-color: #003087; /* Deep blue for Superman's suit */
+    --accent-red: #E32636; /* Bright red for Superman's cape */
+    --accent-yellow: #FFC107; /* Vibrant yellow for Superman's emblem */
+    --accent-blue: #1E90FF; /* Lighter blue for Metropolis sky */
+    --accent-gray: #B0C4DE; /* Metallic gray for a heroic touch */
+    --accent-glow: #FF4500; /* Red glow for power effects */
     --transition: 0.3s;
-  }
-  
-  * {
+}
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html {
+}
+
+html {
     width: 100vw;
     min-height: 100vh;
     overflow-x: hidden;
     scroll-behavior: smooth;
-  }
-  
-  body {
+}
+
+body {
     position: relative;
     width: 100vw;
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a1a2e 0%, var(--bg-main-color) 100%);
-    font-family: 'Josefin Sans', sans-serif;
+    background: linear-gradient(135deg, #1C2526 0%, var(--bg-main-color) 100%); /* Metropolis night sky */
+    font-family: 'Poppins', 'Josefin Sans', sans-serif;
     font-size: 16px;
     color: #ffffff;
     text-align: center;
     overflow-x: hidden;
-  }
-  
-  /* BALL 1 */
-  .ball-1 {
+}
+
+/* BALL 1 */
+.ball-1 {
     position: absolute;
     height: 48vh;
     max-height: 380px;
     aspect-ratio: 1;
-    background: radial-gradient(circle at 40% 40%, var(--accent-yellow), var(--accent-orange));
+    background: radial-gradient(circle at 40% 40%, var(--accent-red), var(--accent-glow));
     border-radius: 50%;
     top: -10%;
     left: 2%;
@@ -49,15 +47,15 @@
     opacity: 0.65;
     filter: blur(12px);
     animation: moveBall1 8s ease-in-out infinite;
-  }
-  
-  /* BALL 2 */
-  .ball-2 {
+}
+
+/* BALL 2 */
+.ball-2 {
     position: absolute;
     height: 28vh;
     max-height: 240px;
     aspect-ratio: 1;
-    background: radial-gradient(circle at 40% 40%, var(--accent-blue), var(--accent-green));
+    background: radial-gradient(circle at 40% 40%, var(--accent-yellow), var(--accent-blue));
     border-radius: 50%;
     bottom: 2%;
     right: 3%;
@@ -65,20 +63,20 @@
     opacity: 0.65;
     filter: blur(12px);
     animation: moveBall2 10s ease-in-out infinite;
-  }
-  
-  /* SCREEN */
-  .screen {
+}
+
+/* SCREEN */
+.screen {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     min-height: 100vh;
     overflow: hidden;
-  }
-  
-  /* CARD */
-  .card {
+}
+
+/* CARD */
+.card {
     width: 400px;
     padding: 25px 20px;
     background: rgba(255, 255, 255, 0.08);
@@ -87,80 +85,80 @@
     backdrop-filter: blur(14px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
     transition: transform var(--transition) ease, box-shadow var(--transition) ease;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
-  }
-  
-  /* CARD HEADER */
-  .card-header {
+}
+
+/* CARD HEADER */
+.card-header {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .profile-photo {
+}
+
+.profile-photo {
     width: 30%;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    border: 2px solid var(--accent-yellow);
     margin-bottom: 15px;
     transition: border-color var(--transition) ease, transform var(--transition) ease;
-  }
-  
-  .profile-photo:hover {
-    border-color: var(--accent-pink);
+}
+
+.profile-photo:hover {
+    border-color: var(--accent-red);
     transform: scale(1.05);
-  }
-  
-  .person-name {
+}
+
+.person-name {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 8px;
-  }
-  
-  .person-desc {
+}
+
+.person-desc {
     font-size: 1rem;
     opacity: 0.85;
     max-width: 85%;
     line-height: 1.4;
-  }
-  
-  /* CARD BODY */
-  .card-body {
+}
+
+/* CARD BODY */
+.card-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 16px; /* Slightly increased from 14px for card-like buttons */
-  }
-  
-  .data-body {
+    gap: 16px;
+}
+
+.data-body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 14px; /* Increased for card effect */
-    background: rgba(255, 255, 255, 0.1); /* Slightly darker for depth */
+    padding: 14px;
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Added shadow for card effect */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     text-decoration: none;
     transition: all var(--transition) ease;
     position: relative;
     overflow: hidden;
-    backdrop-filter: blur(8px); /* Added for card-like glassmorphism */
-  }
-  
-  .data-body:hover {
+    backdrop-filter: blur(8px);
+}
+
+.data-body:hover {
     background: rgba(255, 255, 255, 0.2);
-    border-color: var(--accent-pink);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
-    transform: translateY(-2px); /* Lift effect instead of scale */
-  }
-  
-  .data-body::before {
+    border-color: var(--accent-red);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.data-body::before {
     content: '';
     position: absolute;
     top: 0;
@@ -169,143 +167,143 @@
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
     transition: 0.4s;
-  }
-  
-  .data-body:hover::before {
+}
+
+.data-body:hover::before {
     left: 100%;
-  }
-  
-  .data-content {
+}
+
+.data-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-  }
-  
-  .name-icon {
+}
+
+.name-icon {
     font-size: 0.95rem;
     font-weight: 400;
     color: #ffffff;
     transition: color var(--transition) ease;
-  }
-  
-  .data-body:hover .name-icon {
-    color: var(--accent-pink);
-  }
-  
-  .svg-icon {
+}
+
+.data-body:hover .name-icon {
+    color: var(--accent-red);
+}
+
+.svg-icon {
     font-size: 1.2rem;
     color: #ffffff;
     transition: color var(--transition) ease;
-  }
-  
-  .svg-icon[viewBox] {
+}
+
+.svg-icon[viewBox] {
     width: 1.2rem;
     height: 1.2rem;
-  }
-  
-  .data-body:hover .svg-icon {
-    color: var(--accent-pink);
-  }
-  
-  /* ANIMATIONS */
-  @keyframes moveBall1 {
+}
+
+.data-body:hover .svg-icon {
+    color: var(--accent-red);
+}
+
+/* ANIMATIONS */
+@keyframes moveBall1 {
     0%, 100% { transform: translate(0, 0); }
     25% { transform: translate(6%, -3%); }
     50% { transform: translate(3%, 6%); }
     75% { transform: translate(-6%, 3%); }
-  }
-  
-  @keyframes moveBall2 {
+}
+
+@keyframes moveBall2 {
     0%, 100% { transform: translate(0, 0); }
     25% { transform: translate(-6%, 3%); }
     50% { transform: translate(-3%, -6%); }
     75% { transform: translate(6%, -3%); }
-  }
-  
-  @keyframes fadeIn {
+}
+
+@keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  .card {
+}
+
+.card {
     animation: fadeIn 1s ease-out;
-  }
-  
-  @keyframes fadeInSvg {
+}
+
+@keyframes fadeInSvg {
     0% { opacity: 0; transform: translateY(8px); }
     100% { opacity: 1; transform: translateY(0); }
-  }
-  
-  .svg-icon {
+}
+
+.svg-icon {
     animation: fadeInSvg 1.2s ease-out;
-  }
-  
-  /* RESPONSIVE DESIGN */
-  @media only screen and (max-width: 600px) {
+}
+
+/* RESPONSIVE DESIGN */
+@media only screen and (max-width: 600px) {
     .card {
-      width: 90vw;
-      padding: 20px 15px;
-      border-radius: 14px;
+        width: 90vw;
+        padding: 20px 15px;
+        border-radius: 14px;
     }
-  
+
     .card-body {
-      grid-template-columns: 1fr;
-      gap: 14px; /* Adjusted for card-like buttons */
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
-  
+
     .data-body {
-      padding: 12px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        padding: 12px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
     }
-  
+
     .data-body:hover {
-      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
     }
-  
+
     .profile-photo {
-      width: 26%;
+        width: 26%;
     }
-  
+
     .person-name {
-      font-size: 1.5rem;
+        font-size: 1.5rem;
     }
-  
+
     .person-desc {
-      font-size: 0.95rem;
+        font-size: 0.95rem;
     }
-  
+
     .ball-1 {
-      height: 40vh;
-      max-height: 320px;
+        height: 40vh;
+        max-height: 320px;
     }
-  
+
     .ball-2 {
-      height: 24vh;
-      max-height: 200px;
+        height: 24vh;
+        max-height: 200px;
     }
-  }
-  
-  @media only screen and (max-width: 400px) {
+}
+
+@media only screen and (max-width: 400px) {
     .card {
-      width: 94vw;
-      padding: 15px 12px;
+        width: 94vw;
+        padding: 15px 12px;
     }
-  
+
     .profile-photo {
-      width: 24%;
+        width: 24%;
     }
-  
+
     .name-icon {
-      font-size: 0.9rem;
+        font-size: 0.9rem;
     }
-  
+
     .svg-icon {
-      font-size: 1.1rem;
+        font-size: 1.1rem;
     }
-  
+
     .svg-icon[viewBox] {
-      width: 1.1rem;
-      height: 1.1rem;
+        width: 1.1rem;
+        height: 1.1rem;
     }
-  }
+}
