@@ -1,17 +1,23 @@
         :root {
-            --bg-main-color: #1e1f22; /* Deep blue for Superman's suit */
-            --accent-red: #E32636; /* Bright red for Superman's cape */
-            --accent-yellow: #033d77; /* Vibrant yellow for Superman's emblem */
-            --accent-blue: #1E90FF; /* Lighter blue for Metropolis sky */
-            --accent-gray: #B0C4DE; /* Metallic gray for a heroic touch */
-            --accent-glow: #FF4500; /* Red glow for power effects */
-            --transition: 0.3s;
+            --bg-main-color: #0d0221;
+            /* Cyberpunk dark purple */
+            --accent-green: #00ff41;
+            /* Matrix green */
+            --accent-pink: #4000ff;
+            /* Neon pink */
+            --accent-cyan: #00ffff;
+            /* Cyber blue */
+            --accent-yellow: #ffff00;
+            /* Retro yellow */
+            --transition: 0.2s;
+            --pixel-font: 'Press Start 2P', cursive;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            image-rendering: pixelated;
         }
 
         html {
@@ -25,12 +31,32 @@
             position: relative;
             width: 100vw;
             min-height: 100vh;
-            background: linear-gradient(135deg, #1C2526 0%, var(--bg-main-color) 100%);
-            font-family: 'Poppins', 'Josefin Sans', sans-serif;
+            background: var(--bg-main-color);
+            background-image:
+                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 4px, 3px 100%;
+            font-family: 'Josefin Sans', sans-serif;
             font-size: 16px;
             color: #ffffff;
             text-align: center;
             overflow-x: hidden;
+        }
+
+        /* Scanline effect overlay */
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(18, 16, 16, 0.1);
+            opacity: 0;
+            z-index: 2;
+            pointer-events: none;
+            animation: flicker 0.15s infinite;
         }
 
         .ball-1 {
@@ -38,14 +64,14 @@
             height: 48vh;
             max-height: 380px;
             aspect-ratio: 1;
-            background: radial-gradient(circle at 40% 40%, var(--accent-red), var(--accent-glow));
+            background: radial-gradient(circle, var(--accent-pink), transparent 70%);
             border-radius: 50%;
             top: -10%;
             left: 2%;
             z-index: -1;
-            opacity: 0.65;
-            filter: blur(12px);
-            animation: soarBall1 6s ease-in-out infinite;
+            opacity: 0.4;
+            filter: blur(40px);
+            animation: move 10s infinite alternate;
         }
 
         .ball-2 {
@@ -53,14 +79,14 @@
             height: 28vh;
             max-height: 240px;
             aspect-ratio: 1;
-            background: radial-gradient(circle at 40% 40%, var(--accent-yellow), var(--accent-blue));
+            background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
             border-radius: 50%;
             bottom: 2%;
             right: 3%;
             z-index: -1;
-            opacity: 0.65;
-            filter: blur(12px);
-            animation: soarBall2 7s ease-in-out infinite;
+            opacity: 0.4;
+            filter: blur(40px);
+            animation: move 8s infinite alternate-reverse;
         }
 
         .screen {
@@ -69,231 +95,184 @@
             align-items: center;
             width: 100vw;
             min-height: 100vh;
-            overflow: hidden;
+            padding: 20px;
         }
 
         .card {
-            width: 400px;
-            padding: 25px 20px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 16px;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-            transition: transform var(--transition) ease, box-shadow var(--transition) ease;
-            animation: heroRise 1.5s ease-out forwards;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.35);
+            width: 450px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 4px solid var(--accent-green);
+            box-shadow:
+                0 0 10px var(--accent-green),
+                inset 0 0 10px var(--accent-green);
+            border-radius: 0;
+            /* Retro is blocky */
+            position: relative;
+            animation: glitched 5s infinite;
         }
 
         .card-header {
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed var(--accent-green);
         }
 
         .profile-photo {
-            width: 30%;
-            border-radius: 50%;
-            border: 2px solid var(--accent-yellow);
-            margin-bottom: 15px;
-            transition: border-color var(--transition) ease, transform var(--transition) ease;
-        }
-
-        .profile-photo:hover {
-            border-color: var(--accent-red);
-            transform: scale(1.05);
+            width: 120px;
+            height: 120px;
+            border: 4px solid var(--accent-pink);
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px var(--accent-pink);
+            border-radius: 0;
+            object-fit: cover;
         }
 
         .person-name {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-bottom: 8px;
+            font-family: var(--pixel-font);
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            text-shadow: 2px 2px var(--accent-pink);
+            margin-bottom: 15px;
         }
 
         .person-desc {
-            font-size: 1rem;
-            opacity: 0.85;
-            max-width: 85%;
-            line-height: 1.4;
-        }
-
-        .card-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            font-family: var(--pixel-font);
+            line-height: 1.6;
+            text-transform: uppercase;
         }
 
         .data-body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: block;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: transparent;
+            border: 2px solid var(--accent-cyan);
             text-decoration: none;
-            transition: all var(--transition) ease;
+            transition: all var(--transition);
             position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
-            animation: pulseIcon 1.2s ease-out;
         }
 
         .data-body:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--accent-red);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-            transform: translateY(-2px);
+            background: var(--accent-cyan);
+            box-shadow: 0 0 20px var(--accent-cyan);
+            transform: scale(1.05);
         }
 
-        .data-body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
-            transition: 0.4s;
-        }
-
-        .data-body:hover::before {
-            left: 100%;
+        .data-body:hover .name-icon,
+        .data-body:hover .svg-icon {
+            color: var(--bg-main-color);
         }
 
         .data-content {
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
+            gap: 15px;
         }
 
         .name-icon {
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: #ffffff;
-            transition: color var(--transition) ease;
-        }
-
-        .data-body:hover .name-icon {
-            color: var(--accent-red);
+            font-family: var(--pixel-font);
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
         }
 
         .svg-icon {
             font-size: 1.2rem;
-            color: #ffffff;
-            transition: color var(--transition) ease;
+            color: var(--accent-cyan);
         }
 
-        .svg-icon[viewBox] {
-            width: 1.2rem;
-            height: 1.2rem;
-        }
-
-        .data-body:hover .svg-icon {
-            color: var(--accent-red);
+        .footer-phrase {
+            margin-top: 30px;
+            font-family: var(--pixel-font);
+            font-size: 0.6rem;
+            color: var(--accent-yellow);
+            text-transform: uppercase;
+            line-height: 2;
+            animation: blink 1s step-end infinite;
         }
 
         /* ANIMATIONS */
-        @keyframes soarBall1 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(8%, -5%) scale(1.05); }
-            50% { transform: translate(5%, 8%) scale(1); }
-            75% { transform: translate(-8%, 5%) scale(1.05); }
+        @keyframes flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            50% {
+                opacity: 0.2;
+            }
+
+            100% {
+                opacity: 0.1;
+            }
         }
 
-        @keyframes soarBall2 {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(-8%, 5%) scale(1.05); }
-            50% { transform: translate(-5%, -8%) scale(1); }
-            75% { transform: translate(8%, -5%) scale(1.05); }
+        @keyframes blink {
+
+            from,
+            to {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
         }
 
-        @keyframes heroRise {
-            0% { opacity: 0; transform: translateY(50px) scale(0.95); }
-            70% { opacity: 1; transform: translateY(-10px) scale(1.02); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
+        @keyframes move {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(10%, 10%);
+            }
         }
 
-        @keyframes pulseIcon {
-            0% { opacity: 0; transform: scale(0.8); }
-            50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 1; transform: scale(1); }
+        @keyframes glitched {
+            0% {
+                transform: skew(0deg);
+            }
+
+            1% {
+                transform: skew(5deg);
+            }
+
+            2% {
+                transform: skew(-5deg);
+            }
+
+            3% {
+                transform: skew(0deg);
+            }
+
+            100% {
+                transform: skew(0deg);
+            }
         }
 
-        /* RESPONSIVE DESIGN */
+        /* RESPONSIVE */
         @media only screen and (max-width: 600px) {
             .card {
-                width: 90vw;
-                padding: 20px 15px;
-                border-radius: 14px;
-            }
-
-            .card-body {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            .data-body {
-                padding: 12px;
-                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            }
-
-            .data-body:hover {
-                box-shadow: 0 5px 14px rgba(0, 0, 0, 0.3);
-            }
-
-            .profile-photo {
-                width: 26%;
+                width: 95vw;
+                padding: 20px;
             }
 
             .person-name {
-                font-size: 1.5rem;
-            }
-
-            .person-desc {
-                font-size: 0.95rem;
-            }
-
-            .ball-1 {
-                height: 40vh;
-                max-height: 320px;
-            }
-
-            .ball-2 {
-                height: 24vh;
-                max-height: 200px;
-            }
-        }
-
-        @media only screen and (max-width: 400px) {
-            .card {
-                width: 94vw;
-                padding: 15px 12px;
-            }
-
-            .profile-photo {
-                width: 24%;
-            }
-
-            .name-icon {
                 font-size: 0.9rem;
             }
 
-            .svg-icon {
-                font-size: 1.1rem;
+            .person-desc {
+                font-size: 0.7rem;
             }
 
-            .svg-icon[viewBox] {
-                width: 1.1rem;
-                height: 1.1rem;
+            .name-icon {
+                font-size: 0.6rem;
             }
         }
