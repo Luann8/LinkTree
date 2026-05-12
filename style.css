@@ -1,15 +1,12 @@
-        :root {
-            --bg-main-color: #0d0221;
-            /* Cyberpunk dark purple */
-            --accent-green: #00ff41;
-            /* Matrix green */
-            --accent-pink: #4000ff;
-            /* Neon pink */
-            --accent-cyan: #00ffff;
-            /* Cyber blue */
-            --accent-yellow: #ffff00;
-            /* Retro yellow */
-            --transition: 0.2s;
+:root {
+            --bg-color: #080808;
+            --card-bg: rgba(15, 15, 15, 0.9);
+            --color-blue: #00559f;
+            --color-gold: #e0bf65;
+            --color-red: #ff3c3c;
+            --color-white: #ffffff;
+            --color-gray: #444444;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             --pixel-font: 'Press Start 2P', cursive;
         }
 
@@ -17,157 +14,156 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            image-rendering: pixelated;
-        }
-
-        html {
-            width: 100vw;
-            min-height: 100vh;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
         }
 
         body {
-            position: relative;
-            width: 100vw;
-            min-height: 100vh;
-            background: var(--bg-main-color);
-            background-image:
-                linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
-                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
+            background: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #080808 100%);
             font-family: 'Josefin Sans', sans-serif;
-            font-size: 16px;
-            color: #ffffff;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        /* Scanline effect overlay */
-        body::after {
-            content: " ";
-            display: block;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            right: 0;
-            background: rgba(18, 16, 16, 0.1);
-            opacity: 0;
-            z-index: 2;
-            pointer-events: none;
-            animation: flicker 0.15s infinite;
-        }
-
-        .ball-1 {
-            position: absolute;
-            height: 48vh;
-            max-height: 380px;
-            aspect-ratio: 1;
-            background: radial-gradient(circle, var(--accent-pink), transparent 70%);
-            border-radius: 50%;
-            top: -10%;
-            left: 2%;
-            z-index: -1;
-            opacity: 0.4;
-            filter: blur(40px);
-            animation: move 10s infinite alternate;
-        }
-
-        .ball-2 {
-            position: absolute;
-            height: 28vh;
-            max-height: 240px;
-            aspect-ratio: 1;
-            background: radial-gradient(circle, var(--accent-cyan), transparent 70%);
-            border-radius: 50%;
-            bottom: 2%;
-            right: 3%;
-            z-index: -1;
-            opacity: 0.4;
-            filter: blur(40px);
-            animation: move 8s infinite alternate-reverse;
-        }
-
-        .screen {
+            color: var(--color-white);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100vw;
-            min-height: 100vh;
-            padding: 20px;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* Ambient Background Orbs */
+        .ball-1, .ball-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(50px);
+            opacity: 0.3;
+        }
+
+        .ball-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--color-red), transparent 70%);
+            top: -5%;
+            left: 5%;
+            animation: floatBall 15s infinite alternate ease-in-out;
+        }
+
+        .ball-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--color-blue), transparent 70%);
+            bottom: 5%;
+            right: 5%;
+            animation: floatBall 12s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes floatBall {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(40px, 40px) scale(1.1); }
+        }
+
+        .screen {
+            padding: 40px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
 
         .card {
-            width: 450px;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 4px solid var(--accent-green);
-            box-shadow:
-                0 0 10px var(--accent-green),
-                inset 0 0 10px var(--accent-green);
-            border-radius: 0;
-            /* Retro is blocky */
+            width: 100%;
+            max-width: 460px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 50px 40px;
             position: relative;
-            animation: glitched 5s infinite;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.8);
         }
 
+        /* Detailed Corner Markers */
+        .card::before, .card::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 2px solid var(--color-blue);
+        }
+
+        .card::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .card::after { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
         .card-header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 2px dashed var(--accent-green);
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 30px;
         }
 
         .profile-photo {
-            width: 120px;
-            height: 120px;
-            border: 4px solid var(--accent-pink);
-            margin-bottom: 20px;
-            box-shadow: 0 0 15px var(--accent-pink);
-            border-radius: 0;
-            object-fit: cover;
+            width: 100px;
+            height: 100px;
+            border: 1px solid var(--color-white);
+            padding: 4px;
+            background: #000;
+            margin-bottom: 25px;
+            box-shadow: 4px 4px 0 var(--color-blue);
         }
 
         .person-name {
             font-family: var(--pixel-font);
-            font-size: 1.2rem;
-            color: var(--accent-cyan);
-            text-shadow: 2px 2px var(--accent-pink);
-            margin-bottom: 15px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            color: var(--color-white);
         }
 
         .person-desc {
-            font-size: 0.9rem;
-            color: var(--accent-green);
+            font-size: 0.6rem;
             font-family: var(--pixel-font);
-            line-height: 1.6;
+            color: var(--color-gold);
+            line-height: 2;
             text-transform: uppercase;
+            opacity: 0.8;
         }
 
         .data-body {
             display: block;
-            padding: 15px;
-            margin-bottom: 15px;
-            background: transparent;
-            border: 2px solid var(--accent-cyan);
             text-decoration: none;
-            transition: all var(--transition);
+            color: var(--color-white);
+            margin-bottom: 12px;
+            padding: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            transition: var(--transition);
             position: relative;
         }
 
         .data-body:hover {
-            background: var(--accent-cyan);
-            box-shadow: 0 0 20px var(--accent-cyan);
-            transform: scale(1.05);
+            background: var(--color-white);
+            transform: scale(1.02);
+            border-color: var(--color-white);
         }
 
-        .data-body:hover .name-icon,
-        .data-body:hover .svg-icon {
-            color: var(--bg-main-color);
+        .data-body:hover .name-icon, .data-body:hover .svg-icon {
+            color: #000;
         }
+
+        /* Brackets around links on hover */
+        .data-body::before, .data-body::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: var(--pixel-font);
+            font-size: 0.8rem;
+            color: var(--color-red);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .data-body::before { content: "["; left: 10px; }
+        .data-body::after { content: "]"; right: 10px; }
+
+        .data-body:hover::before { opacity: 1; left: 5px; }
+        .data-body:hover::after { opacity: 1; right: 5px; }
 
         .data-content {
             display: flex;
@@ -178,101 +174,42 @@
 
         .name-icon {
             font-family: var(--pixel-font);
-            font-size: 0.7rem;
-            color: var(--accent-cyan);
+            font-size: 0.55rem;
             text-transform: uppercase;
         }
 
         .svg-icon {
-            font-size: 1.2rem;
-            color: var(--accent-cyan);
+            font-size: 1.1rem;
         }
 
         .footer-phrase {
-            margin-top: 30px;
+            margin-top: 50px;
             font-family: var(--pixel-font);
-            font-size: 0.6rem;
-            color: var(--accent-yellow);
+            font-size: 0.5rem;
+            padding: 15px;
+            border: 1px dashed var(--color-gold);
+            color: var(--color-gold);
             text-transform: uppercase;
             line-height: 2;
-            animation: blink 1s step-end infinite;
+            position: relative;
         }
 
-        /* ANIMATIONS */
-        @keyframes flicker {
-            0% {
-                opacity: 0.1;
-            }
-
-            50% {
-                opacity: 0.2;
-            }
-
-            100% {
-                opacity: 0.1;
-            }
+        /* Highlight bar at the top of footer phrase */
+        .footer-phrase::before {
+            content: "SYSTEM MESSAGE";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-color);
+            padding: 0 10px;
+            font-size: 0.4rem;
+            color: var(--color-red);
         }
 
-        @keyframes blink {
-
-            from,
-            to {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0;
-            }
-        }
-
-        @keyframes move {
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(10%, 10%);
-            }
-        }
-
-        @keyframes glitched {
-            0% {
-                transform: skew(0deg);
-            }
-
-            1% {
-                transform: skew(5deg);
-            }
-
-            2% {
-                transform: skew(-5deg);
-            }
-
-            3% {
-                transform: skew(0deg);
-            }
-
-            100% {
-                transform: skew(0deg);
-            }
-        }
-
-        /* RESPONSIVE */
-        @media only screen and (max-width: 600px) {
-            .card {
-                width: 95vw;
-                padding: 20px;
-            }
-
-            .person-name {
-                font-size: 0.9rem;
-            }
-
-            .person-desc {
-                font-size: 0.7rem;
-            }
-
-            .name-icon {
-                font-size: 0.6rem;
-            }
+        /* Responsive */
+        @media (max-width: 600px) {
+            .card { padding: 40px 20px; width: 92vw; }
+            .person-name { font-size: 0.7rem; }
+            .footer-phrase { font-size: 0.45rem; }
         }
